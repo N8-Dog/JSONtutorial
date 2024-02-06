@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON JavaScript COURSE </title>
+  </head>
+  <body>
+    <h1 id="header"></h1>
+<button id="addButton"> addButton</button>
+<button id="seeButton"> seeButton</button>
+<input type="text" id="firstName">
+<input type="text" id="lastName">
+    <script>
+    document.getElementById('addButton').addEventListener('click',addToStorage);
+    document.getElementById('seeButton').addEventListener('click',viewStorage);
+    const people = JSON.parse(localStorage.getItem('tester1')) || {"first":"none", "last":"none"};
+    console.log(people);
+
+    function addToStorage(){
+      let tempFirst =  document.getElementById('firstName').value;
+      let tempLast =  document.getElementById('lastName').value;
+      let myObj = JSON.stringify({"first":tempFirst,"last":tempLast});
+      localStorage.setItem('tester1', myObj);
+      console.log('Clicked' + myObj);
+    }
+
+    function viewStorage(){
+      let tempHolder = JSON.parse(localStorage.getItem('tester'))|| people;
+    
+      console.log(tempHolder);
+    }
+
+   /* var myJSON={"fist":"Nate","last":"Dog"};
+    var myJSONstringified = JSON.stringify(myJSON); //change en stringify
+    var myJSONparsed = JSON.parse(myJSONstringified); //change back into object*/
+    </script>
+
+  </body>
+</html>
